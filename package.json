@@ -1,0 +1,26 @@
+{
+  "name": "edentic-nuxt-app",
+  "version": "1.0.0",
+  "description": "Edentic Nuxt App",
+  "author": "Edentic ApS",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt --hostname '0.0.0.0' --port 3000",
+    "build": "nuxt build",
+    "start": "nuxt start --hostname '0.0.0.0' --port 3000",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "contentful": "^7.9.1",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/dotenv": "^1.3.0",
+    "cross-env": "^5.2.0",
+    "node-sass": "^4.10.0",
+    "nodemon": "^1.11.0",
+    "nuxt-imagemin": "^1.0.0",
+    "nuxt-robots-module": "^1.4.0",
+    "sass-loader": "^7.1.0"
+  }
+}

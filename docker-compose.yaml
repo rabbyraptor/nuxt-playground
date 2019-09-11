@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  nuxtapp:
+    build:
+      context: ./docker
+      dockerfile: frontend.dockerfile
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www:cached
+    tty: true
+    ports:
+      - 3000:3000
