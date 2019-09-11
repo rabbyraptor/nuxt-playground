@@ -1,19 +1,6 @@
 <template>
   <div class="container">
-    <!-- render data of the person -->
-    <!-- <h1 class="title">{{ person.fields.name }}</h1> -->
-    <!-- render blog posts -->
-    <ul class="blogPostList">
-      <li v-for="post in posts">
-        <h1 class="title">{{ post.fields.title }}</h1>
-        <p class="author">Written by: {{ post.fields.author.fields.name }}</p>
-        <img :src="post.fields.heroImage.fields.file.url" />
-        <br />
-        <em class>{{ post.fields.description }}</em>
-        <br /><br/>
-        <div v-html="post.fields.body"></div>
-      </li>
-    </ul>
+    <h1 class="title">Nothing here for the time being...</h1>
   </div>
 </template>
 
