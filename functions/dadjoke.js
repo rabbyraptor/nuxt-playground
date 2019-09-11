@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-const API_ENDPOINT = "https://icanhazdadjoke.com/";
+const API_ENDPOINT = require("https://icanhazdadjoke.com/");
 
 exports.handler = async (event, context) => {
   return fetch(API_ENDPOINT, { headers: { "Accept": "application/json" } })
