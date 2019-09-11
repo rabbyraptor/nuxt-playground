@@ -3,8 +3,8 @@
     <form name="contact" method="POST" data-netlify="true">
       <input type="hidden" name="contact" value="contact">
       <div class="form__input">
-        <input type="text" name="name" id="name" required />
         <label for="name">Navn</label>
+        <input type="text" name="name" id="name" required />
       </div>
       <div class="form__input">
         <label for="email">Email</label>
@@ -13,6 +13,10 @@
       <div class="form__textarea">
         <label for="message">Besked</label>
         <textarea name="message" id="message" required></textarea>
+      </div>
+      <div class="form__input">
+        <label for="file">Upload fil</label>
+        <input type="file" name="file" id="file" required />
       </div>
       <button type="submit" class="button button--submit">
         <span>Send besked</span>
@@ -25,6 +29,11 @@
 <style>
 body {
   background-color: #35495e;
+}
+form div{
+  display:flex;
+  flex-flow: column wrap;
+  margin-bottom:16px;
 }
 .form {
   margin: 0 auto;
