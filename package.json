@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "contentful": "^7.9.1",
+    "encoding": "^0.1.12",
     "netlify-lambda": "^1.6.3",
     "nuxt": "^2.0.0"
   },
