@@ -83,3 +83,6 @@ dist
 package-lock.json
 .contentful.json
 .nvmrc
+
+# Functions directory
+functions/
