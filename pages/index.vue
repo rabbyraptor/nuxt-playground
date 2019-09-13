@@ -1,6 +1,10 @@
 <template>
   <div class="container">
     <h1 class="title">Nothing here for the time being...</h1>
+    <hr><br>
+    <nuxt-link to="/todo">Todo</nuxt-link>
+    <nuxt-link to="/kontakt">Kontakt</nuxt-link>
+    <nuxt-link to="/blog">Blog</nuxt-link>
   </div>
 </template>
 
@@ -89,7 +93,28 @@ export default {
       })
       .catch(console.error);
   }
+
 };
+
+
+/* ,
+  methods:{
+    createTodo(data){
+    return fetch('/.netlify/functions/todos-create', {
+        body: JSON.stringify(data),
+        method: 'POST'
+      }).then(response => {
+        return response.json()
+      })
+    }
+  },
+  data() {
+    return{
+    title: 'My todo title',
+    completed: false,
+    }
+  }
+ */
 </script>
 
 
