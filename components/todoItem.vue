@@ -23,7 +23,7 @@ export default{
 }
 </script>
 
-<style scoped>
+<style>
   li{
     background-color:#efefef;
     padding:1em 2em;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input v-model="input" type="text" placeholder="Add a todo item" required />
+    <input v-model="input" @keyup.enter="emitAddItem()" type="text" placeholder="Add a todo item" required />
     <button type="submit" @click="emitAddItem()">
       <span>Create todo</span>
     </button>
@@ -30,7 +30,7 @@ export default{
 }
 </script>
 
-<style scoped>
+<style>
   li{
     background-color:#efefef;
     padding:1em 2em;

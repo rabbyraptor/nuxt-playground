@@ -7,9 +7,10 @@
     </div>
     <div id="todo-list">
       <h2>Todo list:</h2>
+      <p>You have {{ items.length }} todos in your list.</p>
       <ul>
         <todo-item :items="items" @emitDeleteItem="deleteItem" v-if="this.items.length > 0"></todo-item>
-        <p v-if="this.items.length <= 0">You've done all of your todos! Nice! :)</p>
+        <p v-if="!containsItems">You've done all of your todos! <b>Now add some!</b></p>
       </ul>
     </div>
   </div>
@@ -18,39 +19,51 @@
 <script>
 import todoItem from '../../components/todoItem'
 import todoItemAdd from '../../components/todoItemAdd'
+import Cookies from '../../node_modules/js-cookie/src/js.cookie.js'
 
 export default {
-  data() {
+  data(){
     return {
-      items:[
-      {name: 'Buy apples'},
-      {name: 'Eat apples'},
-      {name: 'Get a haircut'}
-      ],
+      items:[],
     }
   },
-  components:
-  {
+  mounted(){
+    if(Cookies.get('todos')){
+      console.log('You have a cookie named todos.')
+      this.items = Cookies.getJSON('todos');
+    }else{
+      console.log("You don't have a cookie named todos.")
+    }
+  },
+  updated(){
+    Cookies.set('todos', this.items);
+    console.log(Cookies.get('todos', this.items));
+  },
+  components:{
     todoItem,
     todoItemAdd
   },
-
   methods:{
     addItem(input){
       this.items.push({name: input});
     },
     deleteItem(item){
-      console.log(this.items.indexOf(item));
       this.items.splice(this.items.indexOf(item), 1);
-    }
+    }    
   },
   computed:{
-    
+    containsItems(){
+      if(this.items.length > 0){
+        return true;
+      }else{
+        return false;
+      }
+    }
   }
 };
 </script>
 
-<style scope>
+<style>
 body {
   background-color: #35495e;
 }
@@ -64,9 +77,8 @@ h1{
   max-width: 1000px;
   display: flex;
   flex-flow: column;
-  padding: 0 5%;
+  padding: 5%;
   background: #fff;
-  padding-top:10%;
 }
 #todo-input{
   margin: 0 0 2em 0;
@@ -80,5 +92,8 @@ h1{
 }
 #todo-list ul{
   padding:0;
+}
+#todo-list p{
+  margin:.5em 0 0 0;
 }
 </style>
