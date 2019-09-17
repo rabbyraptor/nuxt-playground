@@ -1,35 +1,24 @@
 <template>
   <div class="form">
-    <form name="contact" method="POST" data-netlify="true">
-      <input type="hidden" name="contact" value="contact">
-      <div class="form__input">
-        <label for="name">Navn</label>
-        <input type="text" name="name" id="name" required />
-      </div>
-      <div class="form__input">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required />
-      </div>
-      <div class="form__textarea">
-        <label for="message">Besked</label>
-        <textarea name="message" id="message" required></textarea>
-      </div>
-      <div class="form__input">
-        <label for="file">Upload fil</label>
-        <input type="file" name="file" id="file" required />
-      </div>
-      <button type="submit" class="button button--submit">
-        <span>Send besked</span>
-      </button>
-    </form>
+    <!-- render data of the person -->
+    <!-- <h1 class="title">{{ person.fields.name }}</h1> -->
+    <!-- render blog posts -->
+    <ul class="blogPostList">
+      <li v-for="post in posts">
+        <h1 class="title">{{ post.fields.title }}</h1>
+        <p class="author">Written by: {{ post.fields.author.fields.name }}</p>
+        <img :src="post.fields.heroImage.fields.file.url" />
+        <br />
+        <em class>{{ post.fields.description }}</em>
+        <br /><br/>
+        <div v-html="post.fields.body"></div>
+      </li>
+    </ul>
   </div>
 </template>
 
 
-<style>
-body {
-  background-color: #35495e;
-}
+<style scoped>
 form div{
   display:flex;
   flex-flow: column wrap;
@@ -47,8 +36,6 @@ form div{
   background: #fff;
 }
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 90px;

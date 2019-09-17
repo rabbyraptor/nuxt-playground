@@ -27,9 +27,6 @@
 
 
 <style>
-body {
-  background-color: #35495e;
-}
 form div{
   display:flex;
   flex-flow: column wrap;

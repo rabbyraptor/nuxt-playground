@@ -1,8 +1,20 @@
 <template>
   <div>
+    <header>
+      <navigation-menu></navigation-menu>
+    </header>
     <nuxt />
   </div>
 </template>
+<script>
+import navigationMenu from '../components/navigationMenu'
+
+export default{
+  components: {
+    navigationMenu
+  }
+}
+</script>
 
 <style>
 html {
@@ -22,6 +34,10 @@ html {
 *:after {
   box-sizing: border-box;
   margin: 0;
+}
+
+body {
+  background-color: #35495e;
 }
 
 .button--green {

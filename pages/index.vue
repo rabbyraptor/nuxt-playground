@@ -1,10 +1,6 @@
 <template>
   <div class="container">
     <h1 class="title">Nothing here for the time being...</h1>
-    <hr><br>
-    <nuxt-link to="/todo">Todo</nuxt-link>
-    <nuxt-link to="/kontakt">Kontakt</nuxt-link>
-    <nuxt-link to="/blog">Blog</nuxt-link>
   </div>
 </template>
 
