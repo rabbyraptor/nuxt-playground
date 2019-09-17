@@ -8,13 +8,11 @@
     "dev": "nuxt --hostname '0.0.0.0' --port 3000",
     "build": "nuxt build",
     "start": "nuxt start --hostname '0.0.0.0' --port 3000",
-    "generate": "nuxt generate && netlify-lambda build functions-source",
-    "bootstrap": "node ./scripts/bootstrap-fauna-database.js"
+    "generate": "nuxt generate && netlify-lambda build functions-source"
   },
   "dependencies": {
     "contentful": "^7.9.1",
     "encoding": "^0.1.12",
-    "fauna-shell": "^0.9.6",
     "js-cookie": "^2.2.1",
     "netlify-cli": "^2.14.0",
     "netlify-lambda": "^1.6.3",
