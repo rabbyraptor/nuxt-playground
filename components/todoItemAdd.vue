@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input v-model="input" @keyup.enter="emitAddItem()" type="text" placeholder="Add a todo item" required />
-    <button type="submit" @click="emitAddItem()">
+    <input v-model="input" @keyup.enter="emitAddItem()" @keyup="emitTemporaryInput()" type="text" placeholder="Add a todo item" required />
+    <button @click="emitAddItem()" :disabled="submitDisabled">
       <span>Create todo</span>
     </button>
   </div>
@@ -9,13 +9,19 @@
 
 <script>
 export default{
+  /* Lav en placeholder-entry i cookie, så den husker hvad man er i gang med at skrive */
   data(){
     return {
       input:''
     }
   },
-  props:{
-    items:{}
+  mounted(){
+    this.input = this.tempInput;
+  },
+  watch:{    
+    tempInput(){
+      this.input = this.tempInput;
+    }
   },
   methods:{
     emitAddItem(){
@@ -24,17 +30,42 @@ export default{
         console.log('Input ' + this.input + ' was emitted');
         this.input = '';
       }
+    },
+    emitTemporaryInput(){
+      this.$emit("emitTemporaryInput", this.input);
+    }
+  },
+  props:{
+    tempInput:''
+  },
+  computed:{
+    submitDisabled(){
+      if(this.input != ""){
+        return false;
+      }else{
+        return true;
+      }
     }
   }
-  
 }
 </script>
 
 <style scoped>
-  li{
-    background-color:#efefef;
-    padding:1em 2em;
+  input{
+    padding:.5em;
     box-sizing: border-box;
     margin:1em 0;
+    font-size: 16px;
+  }
+  input:hover{
+    cursor:initial;
+  }
+  button{
+    padding:.4em;
+    font-size:16px;
+    margin:1px 0 0 0;
+  }
+  button:hover{
+    cursor:pointer;
   }
 </style>

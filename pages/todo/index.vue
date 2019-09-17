@@ -1,47 +1,47 @@
 <template>
   <div class="wrapper">
     <h1>Todo list</h1>
+    <toggle-switch class="switch-delete" @emitToggleSwitch="toggleSwitch">Delete Todos:</toggle-switch>
     <div id="todo-input">
       <h3 for="name">Create todo</h3>
-      <todo-item-add @emitAddItem="addItem"></todo-item-add>
+      <todo-item-add @emitAddItem="addItem" @emitTemporaryInput="saveTemporaryInput" :tempInput="tempInput"></todo-item-add>
     </div>
     <div id="todo-list">
       <h2>Todo list:</h2>
-      <p>You have {{ items.length }} todos in your list.</p>
-      <ul>
-        <todo-item :items="items" @emitDeleteItem="deleteItem" v-if="this.items.length > 0"></todo-item>
-        <p v-if="!containsItems">You've done all of your todos! <b>Now add some!</b></p>
-      </ul>
+      <p style="width:100%;">You have {{ items.length }} todos in your list.</p>
+      <todo-items :items="items" @emitDeleteItem="deleteItem" v-if="this.items.length > 0" :switchState="switchState"></todo-items>
+      <p v-if="!containsItems">You've done all of your todos! <b>Now add some!</b></p>
     </div>
   </div>
 </template>
 
 <script>
-import todoItem from '../../components/todoItem'
+import todoItems from '../../components/todoItems'
 import todoItemAdd from '../../components/todoItemAdd'
+import toggleSwitch from '../../components/toggleSwitch'
 import Cookies from '../../node_modules/js-cookie/src/js.cookie.js'
 
 export default {
   data(){
     return {
       items:[],
+      tempInput:'',
+      switchState:false
     }
   },
   mounted(){
     if(Cookies.get('todos')){
-      console.log('You have a cookie named todos.')
       this.items = Cookies.getJSON('todos');
-    }else{
-      console.log("You don't have a cookie named todos.")
     }
+    this.tempInput = Cookies.getJSON('temporaryInput', this.tempInput)
   },
   updated(){
     Cookies.set('todos', this.items);
-    console.log(Cookies.get('todos', this.items));
   },
   components:{
-    todoItem,
-    todoItemAdd
+    todoItems,
+    todoItemAdd,
+    toggleSwitch
   },
   methods:{
     addItem(input){
@@ -49,7 +49,13 @@ export default {
     },
     deleteItem(item){
       this.items.splice(this.items.indexOf(item), 1);
-    }    
+    },
+    saveTemporaryInput(input){
+      Cookies.set('temporaryInput', input);
+    }, 
+    toggleSwitch(switchState){
+      this.switchState = switchState;
+    } 
   },
   computed:{
     containsItems(){
@@ -95,5 +101,18 @@ h1{
 }
 #todo-list p{
   margin:.5em 0 0 0;
+}
+.switch-delete{
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  width:100%;
+  margin:0 0 1em 0;
+}
+.switch-delete div{
+  float:left;
+  clear:both;
+  display:block;
+  height:20px;
 }
 </style>
