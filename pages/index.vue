@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title">Nothing here for the time being...</h1>
+    <h1 class="title">Here be no dragons!</h1>
   </div>
 </template>
 

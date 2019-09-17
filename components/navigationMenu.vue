@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <nuxt-link v-for="page in pages" :to="page.link">{{ page.name }}</nuxt-link>
+    <nuxt-link v-for="page in pages" :to="page.link" :key="page.name">{{ page.name }}</nuxt-link>
   </ul>
 </template>
 
@@ -8,8 +8,13 @@
 export default{
   data(){
     return {
-        pages:[{name: "Home", link: "/"}, {name: "Todo", link: "/todo"}, {name: "Kontakt", link: "/kontakt"}, {name: "Blog", link: "/blog"}]
-      }
+      pages:[
+        {name: "Home", link: "/"}, 
+        {name: "Todo", link: "/todo"}, 
+        {name: "Blog", link: "/blog"},
+        {name: "Kontakt", link: "/kontakt"}
+      ]
+    }
   }
 }
 </script>
