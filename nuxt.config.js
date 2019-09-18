@@ -47,7 +47,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/directives.js'
+    '@/plugins/directives.js',
+    {src: '@/plugins/draggable.js', mode: 'client'},
   ],
 
   /*

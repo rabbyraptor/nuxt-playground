@@ -1,9 +1,11 @@
 <template>
   <ul>
-    <li v-for="(item, index) in items" :key="index">
+    <draggable v-model="mutableList" @start="drag=true" @end="drag=false;emitUpdateListOrder(mutableList);">
+      <li v-for="item in mutableList" :key="item.name">
         <span class="name">{{ item.name }}</span>
         <span v-if="switchState" @click="emitDeleteItem(item)" class="remove-item"></span>
       </li>
+    </draggable>
   </ul>
 </template>
 
@@ -11,7 +13,7 @@
 export default{
   data(){
     return {
-      
+        mutableList: this.items
       }
   },
   props:{
@@ -22,8 +24,11 @@ export default{
     emitDeleteItem(item){
       this.$emit("emitDeleteItem", item);
       console.log('Item ' + item.name + ' was deleted');
+    },
+    emitUpdateListOrder(mutableList){
+      this.$emit("emitUpdateListOrder", mutableList);
     }
-  }  
+  }
 }
 </script>
 
@@ -37,6 +42,11 @@ export default{
     align-items: center;
     justify-content: space-between;
     border:1px solid #cecece;
+    cursor:move;
+    cursor: grab;
+  }
+  li:active{
+    cursor: grabbing;
   }
   .name{
     padding: 3px 0;

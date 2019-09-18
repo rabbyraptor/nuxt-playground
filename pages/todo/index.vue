@@ -9,7 +9,7 @@
     <div id="todo-list">
       <h2>Todo list:</h2>
       <p style="width:100%;">You have {{ items.length }} todos in your list.</p>
-      <todo-items :items="items" @emitDeleteItem="deleteItem" v-if="this.items.length > 0" :switchState="switchState"></todo-items>
+      <todo-items :items="items" @emitDeleteItem="deleteItem" @emitUpdateListOrder="updateListOrder" v-if="this.items.length > 0" :switchState="switchState"></todo-items>
       <p v-if="!containsItems">You've done all of your todos! <b>Now add some!</b></p>
     </div>
   </div>
@@ -55,7 +55,10 @@ export default {
     }, 
     toggleSwitch(switchState){
       this.switchState = switchState;
-    } 
+    },
+    updateListOrder(mutableList){
+      this.items = mutableList;
+    }
   },
   computed:{
     containsItems(){
