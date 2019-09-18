@@ -1,7 +1,7 @@
 <template>
-  <ul>
+  <nav>
     <nuxt-link v-for="page in pages" :to="page.link" :key="page.name">{{ page.name }}</nuxt-link>
-  </ul>
+  </nav>
 </template>
 
 <script>
@@ -20,7 +20,7 @@ export default{
 </script>
 
 <style scoped>
-ul{
+nav{
   padding:0;
   display: flex;
   justify-content: center;
