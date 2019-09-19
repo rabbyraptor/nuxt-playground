@@ -16,7 +16,7 @@
     "js-cookie": "^2.2.1",
     "netlify-cli": "^2.14.0",
     "netlify-lambda": "^1.6.3",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.9.2",
     "vuedraggable": "^2.23.0"
   },
   "devDependencies": {
