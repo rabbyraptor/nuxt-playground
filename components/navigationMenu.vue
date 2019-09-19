@@ -32,7 +32,7 @@ a{
   background-color:#fff;
   padding:1em 2em;
   box-sizing: border-box;
-  margin:1em 0;
+  margin:0;
   display:block;
 }
 a:hover{
