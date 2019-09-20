@@ -12,6 +12,7 @@ export default{
         {name: "Home", link: "/"}, 
         {name: "Todo", link: "/todo"}, 
         {name: "Blog", link: "/blog"},
+        {name: "Firebase", link: "/firebase"},
         {name: "Kontakt", link: "/kontakt"}
       ]
     }
