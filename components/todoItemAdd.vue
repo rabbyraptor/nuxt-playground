@@ -9,7 +9,6 @@
 
 <script>
 export default{
-  /* Lav en placeholder-entry i cookie, så den husker hvad man er i gang med at skrive */
   data(){
     return {
       input:''
@@ -29,6 +28,7 @@ export default{
         this.$emit("emitAddItem", this.input);
         console.log('Input ' + this.input + ' was emitted');
         this.input = '';
+        this.$emit("emitTemporaryInput", this.input);
       }
     },
     emitTemporaryInput(){
